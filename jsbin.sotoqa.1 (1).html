@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by bialka104b (http://jsbin.com/sotoqa/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+
+<head>
+  <meta name="description" content="nonagram">
+  <title>Nonagram</title>
+  <meta charset="utf-8">
+  <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAAIgAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAsAAABzAAAAvQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAA////AJen8gAAAIQAAAASAAAADQAAAHYAfIrpAP///wAOEaYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjAP///wD///8A////AJah7wCGkOoA////Af///0D///8AAAB3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANwD///8A////AP///wD///8A////AP///4r///+Z////AAAARwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAu8f9AP///wD///8A////AP///yz/////////N9Tf/wAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAACAAP///wD///8A////AP///wb/////////j////wD///8AAAB8AAAAAQAAAAAAAAAAAAAAAAAAAAIAAwOUAP///wD///8A////AP///wD///8A////Bv///wD///8A////AP///wAAAIsAAAABAAAAAAAAAAcAEROnAP///wD///8A////AP///wD///8A////af///2r///8A////AP///wD///8A////AAYImgAAAAMAAAB4ADxE5ACzxv4A+v//AP///wD///8A////AP///+z////B////AP///wD///8A////AMvj/wBASvUAAAB9AAAAAAAAAAAAAAALAAAALwAAAFQAAACfAP///wD/////////W////wAAAKMAAABdAAAAOwAAABoAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQB2fuUA////9////wJxeeMAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABrFv///1n///8AAABmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAJnc+EAWGPaAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABmAAAAWQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7/MAAOPDAADgBwAA4AcAAOAHAADgBwAAwAMAAIABAAAAAAAAAAAAAMABAAD4HwAA/D8AAPw/AAD+fwAA/n8AAA==" rel="icon" type="image/x-icon">
+<style id="jsbin-css">
+div {
+}
+#canvas {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  box-shadow: 15px 15px 10px grey;
+}
+.blue { background-color:#0099CC;}
+.black {background-color: #000000;}
+.orange1 {background-color: #d89c10;}
+.orange2 { background-color: #fdc032;}
+.orange3 { background-color: #fbdb8f;}
+.orange4 { background-color: #ffe9b4;}
+.orange5 { background-color: #fff4d8;}
+.white {background-color: #ffffff;}
+
+#first-row {
+  height:20px;
+  width:600px;}
+#second-row {
+  height:20px;
+  width:600px;}
+#third-row {
+  height:20px;
+  width:600px;}
+#fifth-row {
+  height:20px;
+  width:600px;}
+#fourth-row {
+  height:20px;
+  width:600px;}
+#sixth-row {
+  height:20px;
+  width:600px;}
+#seventh-row {
+  height:20px;
+  width:600px;}
+#eighth-row {
+  height:20px;
+  width:600px;}
+#ninth-row {
+  height:20px;
+  width:600px;}
+#tenth-row {
+  height:20px;
+  width:600px;}
+#eleventh-row {
+  height:20px;
+  width:600px;}
+#twelfth-row {
+  height:20px;
+  width:600px;}
+#thirteenth-row {
+  height:20px;
+  width:600px;}
+#fourteenth-row {
+  height:20px;
+  width:600px;}
+#fifteenth-row {
+  height:20px;
+  width:600px;}
+#sixteenth-row {
+  height:20px;
+  width:600px;}
+#seventeenth-row {
+  height:20px;
+  width:600px;}
+#eighteenth-row {
+  height:20px;
+  width:600px;}
+#nineteenth-row {
+  height:20px;
+  width:600px;}
+#twentyth-row {
+  height:20px;
+  width:600px;}
+#twenty-first-row {
+  height:20px;
+  width:600px;}
+#twenty-second-row {
+  height:20px;
+  width:600px;}
+#twenty-third-row {
+  height:20px;
+  width:600px;}
+#twenty-fourth-row {
+  height:20px;
+  width:600px;}
+#twenty-fifth-row {
+  height:20px;
+  width:600px;}
+#twenty-sixth-row {
+  height:20px;
+  width:600px;}
+#twenty-seventh-row {
+  height:20px;
+  width:600px;}
+#twenty-eight-row {
+  height:20px;
+  width:600px;}
+#twenty-ninth-row {
+  height:20px;
+  width:600px;}
+#thirtieth-row {
+  height:20px;
+  width:600px;}
+
+.first-quadrat {
+  height:20px;
+  width:20px;
+  float:right;}
+.second-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.third-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.fifth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.fourth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.sixth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.seventh-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.eighth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.ninth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.tenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.eleventh-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twelfth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.thirteenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.fourteenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.fifteenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.sixteenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.seventeenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.eighteenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.nineteenth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twentyth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-first-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-second-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-third-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-fourth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-fifth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-sixth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-seventh-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;}
+.twenty-eight-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;
+}
+.twenty-ninth-quadrat {
+  height:20px;
+  width:20px;
+  display:inline-block;
+  float:right;
+}
+.thirtieth-quadrat {
+  height:20px;
+  width:20px;
+  display:block;}
+
+</style>
+</head>
+<body class="">
+<div id="canvas">
+  <div id="first-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat" class=""></div>
+    <div class="fifteenth-quadrat black"></div>
+    <div class="sixteenth-quadrat black"></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="second-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat black"></div>
+    <div class="fifteenth-quadrat orange1"></div>
+    <div class="sixteenth-quadrat black"></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="third-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat black"></div>
+    <div class="fifteenth-quadrat orange1"></div>
+    <div class="sixteenth-quadrat orange1"></div>
+    <div class="seventeenth-quadrat black"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+	</div>
+  <div id="fourth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat black"></div>
+    <div class="fourteenth-quadrat orange1"></div>
+    <div class="fifteenth-quadrat orange2"></div>
+    <div class="sixteenth-quadrat orange1"></div>
+    <div class="seventeenth-quadrat orange1"></div>
+    <div class="eighteenth-quadrat black"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="fifth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat black"></div>
+    <div class="fourteenth-quadrat orange1"></div>
+    <div class="fifteenth-quadrat orange2"></div>
+    <div class="sixteenth-quadrat orange2"></div>
+    <div class="seventeenth-quadrat orange1"></div>
+    <div class="eighteenth-quadrat black"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="sixth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat black"></div>
+    <div class="thirteenth-quadrat orange1"></div>
+    <div class="fourteenth-quadrat orange2"></div>
+    <div class="fifteenth-quadrat orange3"></div>
+    <div class="sixteenth-quadrat orange2"></div>
+    <div class="seventeenth-quadrat orange2"></div>
+    <div class="eighteenth-quadrat orange1"></div>
+    <div class="nineteenth-quadrat black"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="seventh-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat black"></div>
+    <div class="thirteenth-quadrat orange1"></div>
+    <div class="fourteenth-quadrat orange2"></div>
+    <div class="fifteenth-quadrat orange3"></div>
+    <div class="sixteenth-quadrat orange3"></div>
+    <div class="seventeenth-quadrat orange2"></div>
+    <div class="eighteenth-quadrat orange1"></div>
+    <div class="nineteenth-quadrat black"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="eighth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat black"></div>
+    <div class="twelfth-quadrat orange1"></div>
+    <div class="thirteenth-quadrat orange2"></div>
+    <div class="fourteenth-quadrat orange3"></div>
+    <div class="fifteenth-quadrat orange3"></div>
+    <div class="sixteenth-quadrat orange3"></div>
+    <div class="seventeenth-quadrat orange3"></div>
+    <div class="eighteenth-quadrat orange2"></div>
+    <div class="nineteenth-quadrat orange1"></div>
+    <div class="twentyth-quadrat black"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="ninth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat black"></div>
+    <div class="twelfth-quadrat orange1"></div>
+    <div class="thirteenth-quadrat orange2"></div>
+    <div class="fourteenth-quadrat orange3"></div>
+    <div class="fifteenth-quadrat orange3"></div>
+    <div class="sixteenth-quadrat orange3"></div>
+    <div class="seventeenth-quadrat orange3"></div>
+    <div class="eighteenth-quadrat orange2"></div>
+    <div class="nineteenth-quadrat orange1"></div>
+    <div class="twentyth-quadrat black"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="tenth-row" class="blue">
+    <div class="first-quadrat" class=""></div>
+    <div class="second-quadrat" class=""></div>
+    <div class="third-quadrat" class=""></div>
+    <div class="fourth-quadrat" class=""></div>
+    <div class="fifth-quadrat" class=""></div>
+    <div class="sixth-quadrat black"></div>
+    <div class="seventh-quadrat black"></div>
+    <div class="eighth-quadrat black"></div>
+    <div class="ninth-quadrat black"></div>
+    <div class="tenth-quadrat black"></div>
+    <div class="eleventh-quadrat orange1"></div>
+    <div class="twelfth-quadrat orange2"></div>
+    <div class="thirteenth-quadrat orange3"></div>
+    <div class="fourteenth-quadrat orange3"></div>
+    <div class="fifteenth-quadrat orange4"></div>
+    <div class="sixteenth-quadrat orange3"></div>
+    <div class="seventeenth-quadrat orange3"></div>
+    <div class="eighteenth-quadrat orange3"></div>
+    <div class="nineteenth-quadrat orange2"></div>
+    <div class="twentyth-quadrat orange1"></div>
+    <div class="twenty-first-quadrat black"></div>
+    <div class="twenty-second-quadrat black"></div>
+    <div class="twenty-third-quadrat black"></div>
+    <div class="twenty-fourth-quadrat black"></div>
+    <div class="twenty-fifth-quadrat black"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="eleventh-row" class="blue">
+    <div class="first-quadrat black"></div>
+    <div class="second-quadrat black"></div>
+    <div class="third-quadrat black"></div>
+    <div class="fourth-quadrat black"></div>
+    <div class="fifth-quadrat black"></div>
+    <div class="sixth-quadrat orange1"></div>
+    <div class="seventh-quadrat orange1"></div>
+    <div class="eighth-quadrat orange1"></div>
+    <div class="ninth-quadrat orange1"></div>
+    <div class="tenth-quadrat orange1"></div>
+    <div class="eleventh-quadrat orange2"></div>
+    <div class="twelfth-quadrat orange3"></div>
+    <div class="thirteenth-quadrat orange3"></div>
+    <div class="fourteenth-quadrat orange4"></div>
+    <div class="fifteenth-quadrat orange4"></div>
+    <div class="sixteenth-quadrat orange4"></div>
+    <div class="seventeenth-quadrat orange4"></div>
+    <div class="eighteenth-quadrat orange3"></div>
+    <div class="nineteenth-quadrat orange3"></div>
+    <div class="twentyth-quadrat orange2"></div>
+    <div class="twenty-first-quadrat orange1"></div>
+    <div class="twenty-second-quadrat orange1"></div>
+    <div class="twenty-third-quadrat orange1"></div>
+    <div class="twenty-fourth-quadrat orange1"></div>
+    <div class="twenty-fifth-quadrat orange1"></div>
+    <div class="twenty-sixth-quadrat black"></div>
+    <div class="twenty-seventh-quadrat black"></div>
+    <div class="twenty-eight-quadrat black"></div>
+    <div class="twenty-ninth-quadrat black"></div>
+    <div class="thirtieth-quadrat black"></div>
+  </div>
+  <div id="twelfth-row" class="blue">
+    <div class="first-quadrat black"></div>
+    <div class="second-quadrat orange1"></div>
+    <div class="third-quadrat orange1"></div>
+    <div class="fourth-quadrat orange1"></div>
+    <div class="fifth-quadrat orange1"></div>
+    <div class="sixth-quadrat orange2"></div>
+    <div class="seventh-quadrat orange2"></div>
+    <div class="eighth-quadrat orange2"></div>
+    <div class="ninth-quadrat orange2"></div>
+    <div class="tenth-quadrat orange2"></div>
+    <div class="eleventh-quadrat orange3"></div>
+    <div class="twelfth-quadrat orange3"></div>
+    <div class="thirteenth-quadrat orange3"></div>
+    <div class="fourteenth-quadrat orange4"></div>
+    <div class="fifteenth-quadrat orange4"></div>
+    <div class="sixteenth-quadrat orange4"></div>
+    <div class="seventeenth-quadrat orange4"></div>
+    <div class="eighteenth-quadrat orange3"></div>
+    <div class="nineteenth-quadrat orange3"></div>
+    <div class="twentyth-quadrat orange3"></div>
+    <div class="twenty-first-quadrat orange2"></div>
+    <div class="twenty-second-quadrat orange2"></div>
+    <div class="twenty-third-quadrat orange3"></div>
+    <div class="twenty-fourth-quadrat orange2"></div>
+    <div class="twenty-fifth-quadrat orange2"></div>
+    <div class="twenty-sixth-quadrat orange1"></div>
+    <div class="twenty-seventh-quadrat orange1"></div>
+    <div class="twenty-eight-quadrat orange1"></div>
+    <div class="twenty-ninth-quadrat orange1"></div>
+    <div class="thirtieth-quadrat black"></div>
+  </div>
+  <div id="thirteenth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat black"></div>
+    <div class="third-quadrat orange1"></div>
+    <div class="fourth-quadrat orange1"></div>
+    <div class="fifth-quadrat orange2"></div>
+    <div class="sixth-quadrat orange3"></div>
+    <div class="seventh-quadrat orange3"></div>
+    <div class="eighth-quadrat orange3"></div>
+    <div class="ninth-quadrat orange3"></div>
+    <div class="tenth-quadrat orange3"></div>
+    <div class="eleventh-quadrat orange3"></div>
+    <div class="twelfth-quadrat orange3"></div>
+    <div class="thirteenth-quadrat orange4"></div>
+    <div class="fourteenth-quadrat orange4"></div>
+    <div class="fifteenth-quadrat orange5"></div>
+    <div class="sixteenth-quadrat orange5"></div>
+    <div class="seventeenth-quadrat orange4"></div>
+    <div class="eighteenth-quadrat orange4"></div>
+    <div class="nineteenth-quadrat orange3"></div>
+    <div class="twentyth-quadrat orange3"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange3"></div>
+    <div class="twenty-third-quadrat orange3"></div>
+    <div class="twenty-fourth-quadrat orange3"></div>
+    <div class="twenty-fifth-quadrat orange3"></div>
+    <div class="twenty-sixth-quadrat orange2"></div>
+    <div class="twenty-seventh-quadrat orange1"></div>
+    <div class="twenty-eight-quadrat orange1"></div>
+    <div class="twenty-ninth-quadrat black"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="fourteenth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat black"></div>
+    <div class="fourth-quadrat black"></div>
+    <div class="fifth-quadrat orange1"></div>
+    <div class="sixth-quadrat orange2"></div>
+    <div class="seventh-quadrat orange3"></div>
+    <div class="eighth-quadrat orange3"></div>
+    <div class="ninth-quadrat orange3"></div>
+    <div class="tenth-quadrat orange3"></div>
+    <div class="eleventh-quadrat orange4"></div>
+    <div class="twelfth-quadrat orange4"></div>
+    <div class="thirteenth-quadrat orange4"></div>
+    <div class="fourteenth-quadrat orange5"></div>
+    <div class="fifteenth-quadrat white"></div>
+    <div class="sixteenth-quadrat orange5"></div>
+    <div class="seventeenth-quadrat orange5"></div>
+    <div class="eighteenth-quadrat orange4"></div>
+    <div class="nineteenth-quadrat orange4"></div>
+    <div class="twentyth-quadrat orange4"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange3"></div>
+    <div class="twenty-third-quadrat orange3"></div>
+    <div class="twenty-fourth-quadrat orange3"></div>
+    <div class="twenty-fifth-quadrat orange2"></div>
+    <div class="twenty-sixth-quadrat orange1"></div>
+    <div class="twenty-seventh-quadrat black"></div>
+    <div class="twenty-eight-quadrat black"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="fifteenth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat black"></div>
+    <div class="sixth-quadrat orange1"></div>
+    <div class="seventh-quadrat orange2"></div>
+    <div class="eighth-quadrat orange3"></div>
+    <div class="ninth-quadrat orange3"></div>
+    <div class="tenth-quadrat orange4"></div>
+    <div class="eleventh-quadrat orange4"></div>
+    <div class="twelfth-quadrat orange4"></div>
+    <div class="thirteenth-quadrat orange5"></div>
+    <div class="fourteenth-quadrat white"></div>
+    <div class="fifteenth-quadrat white"></div>
+    <div class="sixteenth-quadrat white"></div>
+    <div class="seventeenth-quadrat orange5"></div>
+    <div class="eighteenth-quadrat orange5"></div>
+    <div class="nineteenth-quadrat orange4"></div>
+    <div class="twentyth-quadrat orange4"></div>
+    <div class="twenty-first-quadrat orange4"></div>
+    <div class="twenty-second-quadrat orange3"></div>
+    <div class="twenty-third-quadrat orange3"></div>
+    <div class="twenty-fourth-quadrat orange2"></div>
+    <div class="twenty-fifth-quadrat orange1"></div>
+    <div class="twenty-sixth-quadrat black"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="sixteenth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat black"></div>
+    <div class="seventh-quadrat orange1"></div>
+    <div class="eighth-quadrat orange2"></div>
+    <div class="ninth-quadrat orange3"></div>
+    <div class="tenth-quadrat orange3"></div>
+    <div class="eleventh-quadrat orange4"></div>
+    <div class="twelfth-quadrat orange4"></div>
+    <div class="thirteenth-quadrat orange4"></div>
+    <div class="fourteenth-quadrat orange5"></div>
+    <div class="fifteenth-quadrat white"></div>
+    <div class="sixteenth-quadrat orange5"></div>
+    <div class="seventeenth-quadrat orange5"></div>
+    <div class="eighteenth-quadrat orange4"></div>
+    <div class="nineteenth-quadrat orange4"></div>
+    <div class="twentyth-quadrat orange4"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange3"></div>
+    <div class="twenty-third-quadrat orange2"></div>
+    <div class="twenty-fourth-quadrat orange1"></div>
+    <div class="twenty-fifth-quadrat black"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="seventeenth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat black"></div>
+    <div class="eighth-quadrat orange1"></div>
+    <div class="ninth-quadrat orange2"></div>
+    <div class="tenth-quadrat orange3 "></div>
+    <div class="eleventh-quadrat orange3 "></div>
+    <div class="twelfth-quadrat orange3 "></div>
+    <div class="thirteenth-quadrat orange4 "></div>
+    <div class="fourteenth-quadrat orange5"></div>
+    <div class="fifteenth-quadrat orange5"></div>
+    <div class="sixteenth-quadrat orange5"></div>
+    <div class="seventeenth-quadrat orange5"></div>
+    <div class="eighteenth-quadrat orange4 "></div>
+    <div class="nineteenth-quadrat orange3 "></div>
+    <div class="twentyth-quadrat orange3 "></div>
+    <div class="twenty-first-quadrat orange3 "></div>
+    <div class="twenty-second-quadrat orange2"></div>
+    <div class="twenty-third-quadrat orange1"></div>
+    <div class="twenty-fourth-quadrat black"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="eighteenth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat black"></div>
+    <div class="ninth-quadrat orange1"></div>
+    <div class="tenth-quadrat orange2"></div>
+    <div class="eleventh-quadrat orange3"></div>
+    <div class="twelfth-quadrat orange4"></div>
+    <div class="thirteenth-quadrat orange5"></div>
+    <div class="fourteenth-quadrat orange4"></div>
+    <div class="fifteenth-quadrat orange4"></div>
+    <div class="sixteenth-quadrat orange4"></div>
+    <div class="seventeenth-quadrat orange4"></div>
+    <div class="eighteenth-quadrat orange5"></div>
+    <div class="nineteenth-quadrat orange4"></div>
+    <div class="twentyth-quadrat orange3"></div>
+    <div class="twenty-first-quadrat orange2"></div>
+    <div class="twenty-second-quadrat orange1"></div>
+    <div class="twenty-third-quadrat black"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="nineteenth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat black"></div>
+    <div class="eighth-quadrat orange1"></div>
+    <div class="ninth-quadrat orange2"></div>
+    <div class="tenth-quadrat orange3 "></div>
+    <div class="eleventh-quadrat orange3"></div>
+    <div class="twelfth-quadrat orange4"></div>
+    <div class="thirteenth-quadrat orange4"></div>
+    <div class="fourteenth-quadrat orange4"></div>
+    <div class="fifteenth-quadrat orange3"></div>
+    <div class="sixteenth-quadrat orange3"></div>
+    <div class="seventeenth-quadrat orange4"></div>
+    <div class="eighteenth-quadrat orange4"></div>
+    <div class="nineteenth-quadrat orange4"></div>
+    <div class="twentyth-quadrat orange3"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange2"></div>
+    <div class="twenty-third-quadrat orange1"></div>
+    <div class="twenty-fourth-quadrat black"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twentyth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat black"></div>
+    <div class="eighth-quadrat orange1"></div>
+    <div class="ninth-quadrat orange2"></div>
+    <div class="tenth-quadrat orange3"></div>
+    <div class="eleventh-quadrat orange4"></div>
+    <div class="twelfth-quadrat orange4"></div>
+    <div class="thirteenth-quadrat orange3"></div>
+    <div class="fourteenth-quadrat orange3"></div>
+    <div class="fifteenth-quadrat orange3"></div>
+    <div class="sixteenth-quadrat orange3"></div>
+    <div class="seventeenth-quadrat orange3"></div>
+    <div class="eighteenth-quadrat orange3"></div>
+    <div class="nineteenth-quadrat orange4"></div>
+    <div class="twentyth-quadrat orange4"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange2"></div>
+    <div class="twenty-third-quadrat orange1"></div>
+    <div class="twenty-fourth-quadrat black"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-first-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat black"></div>
+    <div class="seventh-quadrat orange1"></div>
+    <div class="eighth-quadrat orange2"></div>
+    <div class="ninth-quadrat orange3"></div>
+    <div class="tenth-quadrat orange3"></div>
+    <div class="eleventh-quadrat orange3"></div>
+    <div class="twelfth-quadrat orange3"></div>
+    <div class="thirteenth-quadrat orange3"></div>
+    <div class="fourteenth-quadrat orange3"></div>
+    <div class="fifteenth-quadrat orange2"></div>
+    <div class="sixteenth-quadrat orange2"></div>
+    <div class="seventeenth-quadrat orange3"></div>
+    <div class="eighteenth-quadrat orange3"></div>
+    <div class="nineteenth-quadrat orange3"></div>
+    <div class="twentyth-quadrat orange3"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange3"></div>
+    <div class="twenty-third-quadrat orange2"></div>
+    <div class="twenty-fourth-quadrat orange1"></div>
+    <div class="twenty-fifth-quadrat black"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-second-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat black"></div>
+    <div class="seventh-quadrat orange1"></div>
+    <div class="eighth-quadrat orange2"></div>
+    <div class="ninth-quadrat orange3"></div>
+    <div class="tenth-quadrat orange3"></div>
+    <div class="eleventh-quadrat orange3"></div>
+    <div class="twelfth-quadrat orange3"></div>
+    <div class="thirteenth-quadrat orange2"></div>
+    <div class="fourteenth-quadrat orange2"></div>
+    <div class="fifteenth-quadrat orange1"></div>
+    <div class="sixteenth-quadrat orange1"></div>
+    <div class="seventeenth-quadrat orange2"></div>
+    <div class="eighteenth-quadrat orange2"></div>
+    <div class="nineteenth-quadrat orange3"></div>
+    <div class="twentyth-quadrat orange3"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange3"></div>
+    <div class="twenty-third-quadrat orange2"></div>
+    <div class="twenty-fourth-quadrat orange1"></div>
+    <div class="twenty-fifth-quadrat black"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-third-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat black"></div>
+    <div class="sixth-quadrat orange1"></div>
+    <div class="seventh-quadrat orange2"></div>
+    <div class="eighth-quadrat orange3"></div>
+    <div class="ninth-quadrat orange3"></div>
+    <div class="tenth-quadrat orange3"></div>
+    <div class="eleventh-quadrat orange2"></div>
+    <div class="twelfth-quadrat orange2"></div>
+    <div class="thirteenth-quadrat orange1"></div>
+    <div class="fourteenth-quadrat orange1"></div>
+    <div class="fifteenth-quadrat black"></div>
+    <div class="sixteenth-quadrat black"></div>
+    <div class="seventeenth-quadrat orange1"></div>
+    <div class="eighteenth-quadrat orange1"></div>
+    <div class="nineteenth-quadrat orange2"></div>
+    <div class="twentyth-quadrat orange2"></div>
+    <div class="twenty-first-quadrat orange3"></div>
+    <div class="twenty-second-quadrat orange3"></div>
+    <div class="twenty-third-quadrat orange3"></div>
+    <div class="twenty-fourth-quadrat orange2"></div>
+    <div class="twenty-fifth-quadrat orange1"></div>
+    <div class="twenty-sixth-quadrat black"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-fourth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat black"></div>
+    <div class="sixth-quadrat orange1"></div>
+    <div class="seventh-quadrat orange2"></div>
+    <div class="eighth-quadrat orange3"></div>
+    <div class="ninth-quadrat orange2"></div>
+    <div class="tenth-quadrat orange2"></div>
+    <div class="eleventh-quadrat orange1"></div>
+    <div class="twelfth-quadrat orange1"></div>
+    <div class="thirteenth-quadrat black"></div>
+    <div class="fourteenth-quadrat black"></div>
+    <div class="fifteenth-quadrat"></div>
+    <div class="sixteenth-quadrat"></div>
+    <div class="seventeenth-quadrat black"></div>
+    <div class="eighteenth-quadrat black"></div>
+    <div class="nineteenth-quadrat orange1"></div>
+    <div class="twentyth-quadrat orange1"></div>
+    <div class="twenty-first-quadrat orange2"></div>
+    <div class="twenty-second-quadrat orange2"></div>
+    <div class="twenty-third-quadrat orange3"></div>
+    <div class="twenty-fourth-quadrat orange2"></div>
+    <div class="twenty-fifth-quadrat orange1"></div>
+    <div class="twenty-sixth-quadrat black"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-fifth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat black"></div>
+    <div class="fifth-quadrat orange1"></div>
+    <div class="sixth-quadrat orange2"></div>
+    <div class="seventh-quadrat orange2"></div>
+    <div class="eighth-quadrat orange2"></div>
+    <div class="ninth-quadrat orange1"></div>
+    <div class="tenth-quadrat orange1"></div>
+    <div class="eleventh-quadrat black"></div>
+    <div class="twelfth-quadrat black"></div>
+    <div class="thirteenth-quadrat "></div>
+    <div class="fourteenth-quadrat "></div>
+    <div class="fifteenth-quadrat "></div>
+    <div class="sixteenth-quadrat "></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat black"></div>
+    <div class="twentyth-quadrat black"></div>
+    <div class="twenty-first-quadrat orange1"></div>
+    <div class="twenty-second-quadrat orange1"></div>
+    <div class="twenty-third-quadrat orange2"></div>
+    <div class="twenty-fourth-quadrat orange2"></div>
+    <div class="twenty-fifth-quadrat orange2"></div>
+    <div class="twenty-sixth-quadrat orange1"></div>
+    <div class="twenty-seventh-quadrat black"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-sixth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat black"></div>
+    <div class="fourth-quadrat orange1"></div>
+    <div class="fifth-quadrat orange2"></div>
+    <div class="sixth-quadrat orange2"></div>
+    <div class="seventh-quadrat orange1"></div>
+    <div class="eighth-quadrat orange1"></div>
+    <div class="ninth-quadrat black"></div>
+    <div class="tenth-quadrat black"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat"></div>
+    <div class="fifteenth-quadrat"></div>
+    <div class="sixteenth-quadrat"></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat black"></div>
+    <div class="twenty-second-quadrat black"></div>
+    <div class="twenty-third-quadrat orange1"></div>
+    <div class="twenty-fourth-quadrat orange1"></div>
+    <div class="twenty-fifth-quadrat orange2"></div>
+    <div class="twenty-sixth-quadrat orange2"></div>
+    <div class="twenty-seventh-quadrat orange1"></div>
+    <div class="twenty-eight-quadrat black"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-seventh-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat black"></div>
+    <div class="fourth-quadrat orange1"></div>
+    <div class="fifth-quadrat orange1"></div>
+    <div class="sixth-quadrat orange1"></div>
+    <div class="seventh-quadrat black"></div>
+    <div class="eighth-quadrat black"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat"></div>
+    <div class="fifteenth-quadrat"></div>
+    <div class="sixteenth-quadrat"></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat black"></div>
+    <div class="twenty-fourth-quadrat black"></div>
+    <div class="twenty-fifth-quadrat orange1"></div>
+    <div class="twenty-sixth-quadrat orange1"></div>
+    <div class="twenty-seventh-quadrat orange1"></div>
+    <div class="twenty-eight-quadrat black"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-eight-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat black"></div>
+    <div class="third-quadrat orange1"></div>
+    <div class="fourth-quadrat orange1"></div>
+    <div class="fifth-quadrat black"></div>
+    <div class="sixth-quadrat black"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat"></div>
+    <div class="fifteenth-quadrat"></div>
+    <div class="sixteenth-quadrat"></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat black"></div>
+    <div class="twenty-sixth-quadrat black"></div>
+    <div class="twenty-seventh-quadrat orange1"></div>
+    <div class="twenty-eight-quadrat orange1"></div>
+    <div class="twenty-ninth-quadrat black"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="twenty-ninth-row" class="blue">
+    <div class="first-quadrat"></div>
+    <div class="second-quadrat black"></div>
+    <div class="third-quadrat black"></div>
+    <div class="fourth-quadrat black"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat"></div>
+    <div class="fifteenth-quadrat"></div>
+    <div class="sixteenth-quadrat"></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat black"></div>
+    <div class="twenty-eight-quadrat black"></div>
+    <div class="twenty-ninth-quadrat black"></div>
+    <div class="thirtieth-quadrat"></div>
+  </div>
+  <div id="thirtieth-row" class="blue">
+    <div class="first-quadrat black"></div>
+    <div class="second-quadrat"></div>
+    <div class="third-quadrat"></div>
+    <div class="fourth-quadrat"></div>
+    <div class="fifth-quadrat"></div>
+    <div class="sixth-quadrat"></div>
+    <div class="seventh-quadrat"></div>
+    <div class="eighth-quadrat"></div>
+    <div class="ninth-quadrat"></div>
+    <div class="tenth-quadrat"></div>
+    <div class="eleventh-quadrat"></div>
+    <div class="twelfth-quadrat"></div>
+    <div class="thirteenth-quadrat"></div>
+    <div class="fourteenth-quadrat"></div>
+    <div class="fifteenth-quadrat"></div>
+    <div class="sixteenth-quadrat"></div>
+    <div class="seventeenth-quadrat"></div>
+    <div class="eighteenth-quadrat"></div>
+    <div class="nineteenth-quadrat"></div>
+    <div class="twentyth-quadrat"></div>
+    <div class="twenty-first-quadrat"></div>
+    <div class="twenty-second-quadrat"></div>
+    <div class="twenty-third-quadrat"></div>
+    <div class="twenty-fourth-quadrat"></div>
+    <div class="twenty-fifth-quadrat"></div>
+    <div class="twenty-sixth-quadrat"></div>
+    <div class="twenty-seventh-quadrat"></div>
+    <div class="twenty-eight-quadrat"></div>
+    <div class="twenty-ninth-quadrat"></div>
+    <div class="thirtieth-quadrat black"></div>
+  </div>
+</div>
+</body>
+</html>
